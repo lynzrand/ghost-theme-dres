@@ -5,24 +5,41 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <title>{{meta_title}}</title>
 
-    <link rel='preconnect' href='https://gstatic.loli.net' />
-    <link
-      href='https://fonts.loli.net/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700;1,800&family=Inter:wght@300;400;500;700;800;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap'
-      rel='stylesheet'
-    />
-    <link rel='stylesheet' href={{asset 'main.css'}} />
-    <script src={{asset 'main.js'}}></script>
+
+    <link rel='stylesheet' href={{asset 'dist/main.css'}} />
+    <script src={{asset 'dist/main.js'}}></script>
     {{ghost_head}}
   </head>
-  <body>
+  <body class="{{body_class}} dark-theme {{#is 'index'}}index-page{{/is}}{{#is 'post'}}post-page{{/is}}">
     <!-- 
       The nav/footer should work in two cases: when the page is wide enough,
       they should be on the two sides of main content; when the page is narrow, 
       they should take up head banner and page bottom.
+
+      To enure this works, we first put them in places that looks good even 
+      without js (page top and bottom) and then move them to the side if the
+      viewport is wide enough.
     -->
-    <nav>{{@site.title}}</nav>
-    {{{body}}}
-    <footer></footer>
+    {{#if @site.cover_image}}
+    <img src="{{@site.cover_image}}" alt="" class="banner-image">
+    {{/if}}
+    <div class="wide-banner-wrapper">
+      <div class="wide-banner-wrapper-inner">
+        <nav class="banner-topleft">{{> logo}}</nav>
+      </div>
+    </div>
+
+    <div class="body-container {{#if @site.cover_image}}with-banner-image{{/if}}">
+        {{{body}}}
+    </div>
+
+    <div class="spacer"></div>
+
+    <footer>
+      CC BY-NC 4.0<br>
+      &copy; Karenia Works <br>
+      Powered by Ghost.
+    </footer>
     {{ghost_foot}}
   </body>
 </html>

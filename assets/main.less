@@ -1,6 +1,108 @@
-@import 'google-fonts.css';
-@import 'fonts/inter/inter.css';
+@import './google-fonts.less';
+@import './fonts/inter/inter.less';
+@import './theme.less';
+@import './viewport.less';
+@import './post.less';
+
+body {
+  // font stuff
+  font-family: 'Inter var', 'Inter', sans-serif;
+  font-size: 18px;
+
+  // display stuff
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  // spaces
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+
+  background: var(--color-bg);
+  color: var(--color-fg);
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+// ======= Banner stuff ======
+
+.banner-image {
+  max-height: 35vh;
+  object-fit: cover;
+}
 
 .logo {
-  font: 'JetBrains Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--color-fg-emph);
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 100%;
+}
+
+.wide-banner-wrapper {
+  position: sticky;
+  box-sizing: border-box;
+  height: 0px;
+  top: 0px;
+}
+
+.wide-banner-wrapper-inner {
+  padding: 48px;
+}
+
+.banner-topleft {
+  position: sticky;
+  left: 0;
+  top: 0;
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+// ====== body =======
+
+.index-page {
+  --body-inset-size: 48px;
+}
+
+.post-page {
+  --body-inset-size: 96px;
+}
+
+.body-container {
+  .when-wider-than(@breakpoint-sm-md, {
+    width: 40rem;
+    align-self: center;
+
+    &.with-banner-image {
+      margin-top: calc(-1 * var(--body-inset-size));
+      min-height: var(--body-inset-size);
+    }
+  });
+
+  .when-narrower-than(@breakpoint-sm-md, {
+    align-self: stretch;
+  });
+
+  padding: 32px;
+  background-color: var(--color-bg);
+}
+
+// ===== footer =====
+
+footer {
+  text-align: right;
+  color: var(--color-secondary);
+  padding: 16px;
+  font-size: 14px;
+
+  .when-wider-than(@breakpoint-md-lg,{
+    position: sticky;
+    bottom: 0;
+  });
 }

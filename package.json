@@ -2,7 +2,6 @@
   "name": "ghost-theme-dres",
   "version": "0.1.0",
   "description": "A monochrome theme for ghost",
-  "main": "build.js",
   "author": {
     "name": "Rynco Maekawa",
     "email": "lynzrand@outlook.com"
@@ -19,14 +18,18 @@
     "posts_per_page": 16
   },
   "scripts": {
-    "build": "node scripts/build.mjs",
+    "dev": "parcel serve assets/main.less assets/scripts/main.ts --dist-dir assets/dist",
+    "build": "parcel build assets/main.less assets/scripts/main.ts --dist-dir assets/dist",
     "zip": "node scripts/zip.mjs",
     "scan": "gscan ."
   },
   "devDependencies": {
+    "@parcel/transformer-less": "2.0.0-beta.2",
     "archiver": "^5.3.0",
     "gscan": "^4.1.0",
     "less": "^4.1.1",
+    "parcel": "^2.0.0-beta.2",
+    "terser": "^5.7.0",
     "typescript": "^4.3.4"
   }
 }

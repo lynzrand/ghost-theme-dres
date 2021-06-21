@@ -1,1 +1,1 @@
-{ "compilerOptions": { "module": "ES5" }, "files": ["assets/scripts/main.ts"] }
+{ "compilerOptions": { "target": "ES6" }, "files": ["assets/scripts/main.ts"] }

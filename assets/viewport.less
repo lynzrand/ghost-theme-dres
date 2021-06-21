@@ -1,0 +1,20 @@
+@breakpoint-sm-md: 720px;
+@breakpoint-md-lg: 1200px;
+
+.when-narrower-than(@breakpoint,@rules) {
+  @media screen and (max-width: @breakpoint) {
+    @rules();
+  }
+}
+
+.when-wider-than(@breakpoint,@rules) {
+  @media screen and (min-width: @breakpoint) {
+    @rules();
+  }
+}
+
+.when-width-between(@breakpoint1, @breakpoint2 ,@rules) {
+  @media screen and (min-width: @breakpoint1) and (max-width: @breakpoint2) {
+    @rules();
+  }
+}
