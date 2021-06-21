@@ -1,0 +1,31 @@
+{
+  "name": "ghost-theme-dres",
+  "version": "0.1.0",
+  "description": "A monochrome theme for ghost",
+  "main": "build.js",
+  "author": {
+    "name": "Rynco Maekawa",
+    "email": "lynzrand@outlook.com"
+  },
+  "license": "MIT",
+  "private": true,
+  "keywords": [
+    "ghost-theme"
+  ],
+  "engines": {
+    "ghost-api": "v4"
+  },
+  "config": {
+    "posts_per_page": 16
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "zip": "node scripts/zip.mjs",
+    "scan": "gscan ."
+  },
+  "devDependencies": {
+    "archiver": "^5.3.0",
+    "gscan": "^4.1.0",
+    "less": "^4.1.1"
+  }
+}
