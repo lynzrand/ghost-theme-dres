@@ -1,3 +1,4 @@
 node_modules
 assets/main.css
 dist.zip
+assets/scripts/**.js

@@ -1,0 +1,1 @@
+{ "compilerOptions": { "module": "ES5" }, "files": ["assets/scripts/main.ts"] }

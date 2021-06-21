@@ -11,15 +11,18 @@
       rel='stylesheet'
     />
     <link rel='stylesheet' href={{asset 'main.css'}} />
-
+    <script src={{asset 'main.js'}}></script>
     {{ghost_head}}
   </head>
   <body>
-    <div class='site-wrapper'>
-      <nav></nav>
-      {{body}}
-      <footer></footer>
-    </div>
+    <!-- 
+      The nav/footer should work in two cases: when the page is wide enough,
+      they should be on the two sides of main content; when the page is narrow, 
+      they should take up head banner and page bottom.
+    -->
+    <nav>{{@site.title}}</nav>
+    {{{body}}}
+    <footer></footer>
     {{ghost_foot}}
   </body>
 </html>
