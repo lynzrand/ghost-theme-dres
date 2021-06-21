@@ -1,5 +1,5 @@
 // ===== Post abstract ====
-.post {
+.post-card {
   // margin merges
   margin-bottom: 48px;
 
@@ -26,5 +26,59 @@
     margin-top: 4px;
     margin-bottom: 4px;
     font-size: 16px;
+  }
+}
+
+// ====== post ======
+.post {
+  h1 {
+    font-size: 48px;
+    margin-top: 0;
+    .when-wider-than(@breakpoint-sm-md,{
+      max-width: 90%;
+    });
+  }
+  .meta {
+    font-size: 16px;
+    color: var(--color-secondary);
+  }
+  .body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    line-height: 150%;
+
+    p {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    figure {
+      margin-left: 0;
+      margin-right: 0;
+      max-width: 100%;
+    }
+
+    figcaption {
+      font-size: 14px;
+      color: var(--color-secondary);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    pre,
+    code {
+      font-size: 14px;
+    }
+
+    code {
+      margin: 0px;
+      background-color: transparent;
+      border: 1px solid var(--color-bg-emph);
+      line-height: 125%;
+    }
   }
 }

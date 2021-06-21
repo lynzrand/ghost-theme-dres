@@ -4,9 +4,14 @@
 @import './viewport.less';
 @import './post.less';
 
+:root {
+  --font-default: 'Inter var', 'Inter', 'Source Han Sans SC', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
 body {
   // font stuff
-  font-family: 'Inter var', 'Inter', sans-serif;
+  font-family: var(--font-default);
   font-size: 18px;
 
   // display stuff
@@ -28,11 +33,18 @@ a {
   text-decoration: underline;
 }
 
+pre,
+code {
+  font-family: var(--font-mono);
+}
+
 // ======= Banner stuff ======
 
 .banner-image {
-  max-height: 35vh;
+  height: 35vh;
   object-fit: cover;
+
+  background: var(--chroma-img-placeholder);
 }
 
 .logo {

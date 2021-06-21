@@ -1,0 +1,12 @@
+{{!< default-layout }}
+{{#with post}}
+  <div class='post'>
+
+    <h1>{{title}}</h1>
+    <div class='meta'>Sent by {{{authors}}} at {{date created_at format='YYYY-MM-DD'}}</div>
+
+    <div class='body'>
+      {{{content}}}
+    </div>
+  </div>
+{{/with}}

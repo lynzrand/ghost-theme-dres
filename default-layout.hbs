@@ -7,7 +7,7 @@
 
 
     <link rel='stylesheet' href={{asset 'dist/main.css'}} />
-    <script src={{asset 'dist/main.js'}}></script>
+    <script src={{asset 'dist/scripts/main.js'}}></script>
     {{ghost_head}}
   </head>
   <body class="{{body_class}} dark-theme {{#is 'index'}}index-page{{/is}}{{#is 'post'}}post-page{{/is}}">
@@ -20,8 +20,10 @@
       without js (page top and bottom) and then move them to the side if the
       viewport is wide enough.
     -->
-    {{#if @site.cover_image}}
-    <img src="{{@site.cover_image}}" alt="" class="banner-image">
+    {{#if post.feature_image}}
+      <img src="{{post.feature_image}}" alt="" class="banner-image">
+    {{else if @site.cover_image}}
+      <img src="{{@site.cover_image}}" alt="" class="banner-image">
     {{/if}}
     <div class="wide-banner-wrapper">
       <div class="wide-banner-wrapper-inner">
@@ -41,5 +43,8 @@
       Powered by Ghost.
     </footer>
     {{ghost_foot}}
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/languages/handlebars.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>
