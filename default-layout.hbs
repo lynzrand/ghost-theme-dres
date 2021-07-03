@@ -1,17 +1,19 @@
 <html lang={{@site.locale}}>
-  <head>
-    <meta charset='UTF-8' />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <title>{{meta_title}}</title>
+
+<head>
+  <meta charset='UTF-8' />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  <title>{{meta_title}}</title>
 
 
-    <link rel='stylesheet' href={{asset 'dist/main.css'}} />
-    <script src={{asset 'dist/scripts/main.js'}}></script>
-    {{ghost_head}}
-  </head>
-  <body class="{{body_class}} dark-theme {{#is 'index'}}index-page{{/is}}{{#is 'post'}}post-page{{/is}}">
-    <!-- 
+  <link rel='stylesheet' href={{asset 'dist/main.css' }} />
+  <script src={{asset 'dist/scripts/main.js' }}></script>
+  {{ghost_head}}
+</head>
+
+<body class="{{body_class}} {{#is 'index'}}index-page{{/is}} {{#is 'post'}}post-page{{/is}} page-narrow">
+  <!-- 
       The nav/footer should work in two cases: when the page is wide enough,
       they should be on the two sides of main content; when the page is narrow, 
       they should take up head banner and page bottom.
@@ -20,31 +22,43 @@
       without js (page top and bottom) and then move them to the side if the
       viewport is wide enough.
     -->
-    {{#if post.feature_image}}
-      <img src="{{post.feature_image}}" alt="" class="banner-image">
-    {{else if @site.cover_image}}
-      <img src="{{@site.cover_image}}" alt="" class="banner-image">
-    {{/if}}
-    <div class="wide-banner-wrapper">
-      <div class="wide-banner-wrapper-inner">
-        <nav class="banner-topleft">{{> logo}}</nav>
-      </div>
+
+  <div class="narrow-header-wrapper">
+    <div class="narrow-header-root" id="ui-narrow-header-root">
+      {{> logo}}
+      {{#is 'index, page, tag, author'}}
+      <nav class="banner-topleft navigation" id="ui-nav">
+        {{navigation}}
+      </nav>
+      {{/is}}
     </div>
+  </div>
 
-    <div class="body-container {{#if @site.cover_image}}with-banner-image{{/if}}">
-        {{{body}}}
+  {{#if post.feature_image}}
+  <img src="{{post.feature_image}}" alt="" class="banner-image">
+  {{else if @site.cover_image}}
+  <img src="{{@site.cover_image}}" alt="" class="banner-image">
+  {{else}}
+  <div class="banner-placeholding-spacer"></div>
+  {{/if}}
+  <div class="wide-banner-wrapper">
+    <div class="wide-banner-wrapper-inner" id="ui-wide-header-root">
     </div>
+  </div>
 
-    <div class="spacer"></div>
+  <div class="body-container {{#if @site.cover_image}}with-banner-image{{/if}}">
+    {{{body}}}
+  </div>
 
-    <footer>
-      CC BY-NC 4.0<br>
-      &copy; Karenia Works <br>
-      Powered by Ghost.
-    </footer>
-    {{ghost_foot}}
-    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/languages/handlebars.min.js"></script>
-    <script>hljs.highlightAll();</script>
-  </body>
+  <div class="spacer"></div>
+
+
+  {{> ui-footer-right}}
+
+  {{ghost_foot}}
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/languages/handlebars.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</body>
+
 </html>

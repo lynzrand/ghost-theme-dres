@@ -26,6 +26,19 @@ body {
 
   background: var(--color-bg);
   color: var(--color-fg);
+
+  .light-theme();
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    .dark-theme();
+  }
+}
+@media (prefers-color-scheme: light) {
+  body {
+    .light-theme();
+  }
 }
 
 a {
@@ -40,6 +53,25 @@ code {
 
 // ======= Banner stuff ======
 
+.narrow-header-wrapper {
+  height: 72px;
+  margin-bottom: -72px;
+  z-index: 100;
+  padding-left: 24px;
+  padding-right: 24px;
+
+  .narrow-header-root {
+    background-color: linear-gradient(90deg, var(--color-bg), transparent);
+
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    font-size: 16px;
+  }
+}
+
 .banner-image {
   height: 35vh;
   object-fit: cover;
@@ -47,16 +79,30 @@ code {
   background: var(--chroma-img-placeholder);
 }
 
+.banner-placeholding-spacer {
+  height: 72px;
+}
+
 .logo {
   font-family: 'JetBrains Mono', monospace;
   color: var(--color-fg-emph);
-  font-size: 36px;
+  a {
+    text-decoration: none;
+  }
+  .page-wide & {
+    font-size: 36px;
+  }
+  .page-narrow & {
+    font-size: 18px;
+    margin-right: 24px;
+  }
   font-weight: 900;
   line-height: 100%;
 }
 
 .wide-banner-wrapper {
   position: sticky;
+  z-index: -100;
   box-sizing: border-box;
   height: 0px;
   top: 0px;
@@ -70,6 +116,38 @@ code {
   position: sticky;
   left: 0;
   top: 0;
+}
+
+ul.nav {
+  list-style-type: none;
+  padding: 0;
+
+  .page-wide & {
+    display: flex;
+    flex-direction: column;
+  }
+  .page-narrow & {
+    display: flex;
+    flex-direction: row;
+  }
+
+  li {
+    color: var(--color-fg-transparent);
+    .page-wide & {
+      margin-bottom: 8px;
+    }
+    .page-narrow & {
+      margin-right: 24px;
+    }
+
+    &.nav-current {
+      color: var(--color-fg-emph);
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
 }
 
 .spacer {
