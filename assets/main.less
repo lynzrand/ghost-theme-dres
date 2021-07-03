@@ -1,5 +1,6 @@
 @import './google-fonts.less';
 @import './fonts/inter/inter.less';
+@import './fonts/remixicon/remixicon.less';
 @import './theme.less';
 @import './viewport.less';
 @import './post.less';
@@ -44,6 +45,10 @@ body {
 a {
   color: inherit;
   text-decoration: underline;
+  &:focus,
+  &:hover {
+    color: var(--color-fg-emph);
+  }
 }
 
 pre,
@@ -51,24 +56,33 @@ code {
   font-family: var(--font-mono);
 }
 
+.ri-text {
+}
+
 // ======= Banner stuff ======
 
 .narrow-header-wrapper {
-  height: 72px;
-  margin-bottom: -72px;
+  position: sticky;
+  top: 0px;
+
+  height: 120px;
+  margin-bottom: -120px;
   z-index: 100;
   padding-left: 24px;
   padding-right: 24px;
 
-  .narrow-header-root {
-    background-color: linear-gradient(90deg, var(--color-bg), transparent);
+  .when-narrower-than(@breakpoint-md-lg, {
+    background: linear-gradient(to bottom, var(--color-bg), 40%, transparent);
+  });
 
-    height: 100%;
+  .narrow-header-root {
+    height: 72px;
     display: flex;
     flex-direction: row;
     align-items: center;
 
     font-size: 16px;
+    font-weight: 500;
   }
 }
 
@@ -84,10 +98,14 @@ code {
 }
 
 .logo {
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--color-fg-emph);
   a {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--color-fg-emph);
     text-decoration: none;
+    &:focus,
+    &:hover {
+      color: var(--color-fg);
+    }
   }
   .page-wide & {
     font-size: 36px;
@@ -102,7 +120,6 @@ code {
 
 .wide-banner-wrapper {
   position: sticky;
-  z-index: -100;
   box-sizing: border-box;
   height: 0px;
   top: 0px;
@@ -133,6 +150,12 @@ ul.nav {
 
   li {
     color: var(--color-fg-transparent);
+
+    &:focus,
+    &:hover {
+      color: var(--color-fg-emph);
+    }
+
     .page-wide & {
       margin-bottom: 8px;
     }
@@ -142,9 +165,14 @@ ul.nav {
 
     &.nav-current {
       color: var(--color-fg-emph);
+      &:focus,
+      &:hover {
+        color: var(--color-fg);
+      }
     }
 
     a {
+      width: 100%;
       text-decoration: none;
     }
   }
@@ -165,6 +193,7 @@ ul.nav {
 }
 
 .body-container {
+  z-index: 1;
   .when-wider-than(@breakpoint-sm-md, {
     width: 40rem;
     align-self: center;
@@ -183,6 +212,17 @@ ul.nav {
   background-color: var(--color-bg);
 }
 
+.share-menu {
+  h5 {
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+  a {
+    text-decoration: none;
+    font-size: 24px;
+  }
+}
+
 // ===== footer =====
 
 footer {
@@ -191,8 +231,8 @@ footer {
   padding: 16px;
   font-size: 14px;
 
-  .when-wider-than(@breakpoint-md-lg,{
-    position: sticky;
-    bottom: 0;
-  });
+  // .when-wider-than(@breakpoint-md-lg,{
+  //   position: sticky;
+  //   bottom: 0;
+  // });
 }

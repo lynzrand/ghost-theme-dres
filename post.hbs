@@ -1,12 +1,41 @@
-{{!< default-layout }}
-{{#with post}}
-  <div class='post'>
+{{!< default-layout }} {{#with post}} <div class='post'>
 
-    <h1>{{title}}</h1>
-    <div class='meta'>Sent by {{{authors}}} at {{date created_at format='YYYY-MM-DD'}}</div>
+  <h1>{{title}}</h1>
+  <div class='meta'>by {{{authors}}} at {{date created_at format='YYYY-MM-DD'}}</div>
 
-    <div class='body'>
-      {{{content}}}
-    </div>
+  <div class='body'>
+    {{{content}}}
   </div>
-{{/with}}
+
+  {{> share-menu}}
+
+  <div class="prev-next-post">
+    {{#prev_post}}
+    <a class="post-link prev-post" href="{{url}}">
+      <div class="caption">
+        <i class="ri-arrow-left-line "></i>
+        Previous
+      </div>
+      <div class="title">
+        {{title}}
+      </div>
+    </a>
+    {{/prev_post}}
+    {{#next_post}}
+    <a class="post-link next-post" href="{{url}}">
+      <div class="caption">
+        Next
+        <i class="ri-arrow-right-line "></i>
+      </div>
+      <div class="title">
+        {{title}}
+      </div>
+    </a>
+    {{/next_post}}
+  </div>
+
+  </div>
+  {{/with}}
+
+
+  {{> ui-footer-right}}

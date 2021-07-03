@@ -1,3 +1,5 @@
+// Moves title and footer around to fit different screen widths
+
 const BREAKPOINT = 1200
 
 export function init() {
@@ -7,13 +9,12 @@ export function init() {
   let observer = new ResizeObserver((entries, observer) => {
     onPageWidthChange(entries, state)
   })
-  observer.observe(document.querySelector('html'))
+  observer.observe(document.body)
 }
 
 function onPageWidthChange(ev: ResizeObserverEntry[], state: UiState) {
-  let entry = ev[0]
-  let size = entry.contentRect
-  let newState = currPageState(size.width)
+  const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+  let newState = currPageState(vw)
   if (state.state != newState) {
     moveComponents(newState)
     state.state = newState
@@ -34,8 +35,10 @@ function moveComponents(to: PageState) {
   const logo = document.getElementById('ui-logo')
   // nav goes to top left on index
   const nav = document.getElementById('ui-nav')
+  // share menu start at its default position (varies among pages), and moves to
+  // left footer if it's wide enough.
+  const shareMenu = document.getElementById('ui-share-menu')
   // footer goes to bottom of content
-  const footerLeft = document.getElementById('ui-footer-left')
   const footerRight = document.getElementById('ui-footer-right')
 
   // change body style
@@ -44,14 +47,12 @@ function moveComponents(to: PageState) {
   body.classList.add(`page-${to}`)
 
   if (to === 'narrow') {
-    const narrowRoot = document.getElementById('ui-narrow-header-root')
-    removeAndAppendTo(narrowRoot,[logo,nav])
+    const narrowHeaderRoot = document.getElementById('ui-narrow-header-root')
+    removeAndAppendTo(narrowHeaderRoot, [logo, nav])
   } else if (to === 'wide') {
-    const wideRoot = document.getElementById('ui-wide-header-root')
-    removeAndAppendTo(wideRoot,[logo,nav])
+    const wideHeaderRoot = document.getElementById('ui-wide-header-root')
+    removeAndAppendTo(wideHeaderRoot, [logo, nav])
   }
-
-  console.log('Move state to ', to, ':', logo, nav, footerLeft, footerRight)
 }
 
 function removeAndAppendTo(target: HTMLElement, items: (HTMLElement | null)[]) {

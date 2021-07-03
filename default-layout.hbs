@@ -8,7 +8,7 @@
 
 
   <link rel='stylesheet' href={{asset 'dist/main.css' }} />
-  <script src={{asset 'dist/scripts/main.js' }}></script>
+  <script src={{asset 'dist/scripts/main.js' }} defer></script>
   {{ghost_head}}
 </head>
 
@@ -51,9 +51,6 @@
   </div>
 
   <div class="spacer"></div>
-
-
-  {{> ui-footer-right}}
 
   {{ghost_foot}}
   <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>

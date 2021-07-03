@@ -32,8 +32,11 @@
 // ====== post ======
 .post {
   h1 {
-    font-size: 48px;
+    font-size: 40px;
     margin-top: 0;
+    line-height: 98%;
+    letter-spacing: -0.02em;
+
     .when-wider-than(@breakpoint-sm-md,{
       max-width: 90%;
     });
@@ -80,5 +83,134 @@
       border: 1px solid var(--color-bg-emph);
       line-height: 125%;
     }
+
+    a::after {
+      font-family: 'remixicon';
+      font-weight: normal;
+      font-style: normal;
+      content: '\ea70';
+    }
   }
+}
+
+.prev-next-post {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: row;
+
+  .post-link {
+    text-decoration: none;
+    display: block;
+    flex-grow: 1;
+  }
+  .prev-post {
+    padding-right: 12px;
+    text-align: left;
+  }
+  .next-post {
+    padding-left: 12px;
+    text-align: right;
+  }
+
+  .caption {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--color-secondary);
+    display: flex;
+    flex-direction: row;
+    i {
+      margin-left: 4px;
+      margin-right: 4px;
+    }
+    align-items: center;
+  }
+  .prev-post .caption {
+    justify-content: flex-start;
+  }
+  .next-post .caption {
+    justify-content: flex-end;
+  }
+}
+
+.kg-bookmark-card {
+  width: 100%;
+  position: relative;
+}
+
+.kg-bookmark-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  color: currentColor;
+  font-family: inherit;
+  text-decoration: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.kg-bookmark-container:hover {
+  text-decoration: none;
+}
+
+.kg-bookmark-content {
+  flex-basis: 0;
+  flex-grow: 999;
+  padding: 20px;
+  order: 1;
+}
+
+.kg-bookmark-title {
+  font-weight: 600;
+}
+
+.kg-bookmark-metadata,
+.kg-bookmark-description {
+  margin-top: 0.5em;
+}
+
+.kg-bookmark-metadata {
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.kg-bookmark-description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.kg-bookmark-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: text-bottom;
+  margin-right: 0.5em;
+  margin-bottom: 0.05em;
+}
+
+.kg-bookmark-thumbnail {
+  display: flex;
+  flex-basis: 24rem;
+  flex-grow: 1;
+}
+
+.kg-bookmark-thumbnail img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+  object-fit: cover;
+}
+
+.kg-bookmark-author {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.kg-bookmark-publisher::before {
+  content: '•';
+  margin: 0 0.5em;
 }
