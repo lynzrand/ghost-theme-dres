@@ -1,7 +1,7 @@
 {
   "name": "ghost-theme-dres",
   "version": "0.1.0",
-  "description": "A monochrome theme for ghost",
+  "description": "A stylish monochrome theme for ghost",
   "author": {
     "name": "Rynco Maekawa",
     "email": "lynzrand@outlook.com"
@@ -13,6 +13,9 @@
   ],
   "engines": {
     "ghost-api": "v4"
+  },
+  "screenshots": {
+    "desktop": "res/mainpage.png"
   },
   "config": {
     "posts_per_page": 16
