@@ -76,6 +76,9 @@ code {
   .when-narrower-than(@breakpoint-md-lg, {
     background: linear-gradient(to bottom, var(--color-bg), 40%, transparent);
   });
+  .when-wider-than(@breakpoint-sm-md, {
+    display: none;
+  });
 }
 
 .narrow-header-root {
@@ -202,7 +205,7 @@ ul.nav {
     width: @max-body-width;
     align-self: center;
 
-    &.with-banner-image {
+    .banner-image ~ & {
       margin-top: calc(-1 * var(--body-inset-size));
       min-height: var(--body-inset-size);
     }
