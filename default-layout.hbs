@@ -43,7 +43,7 @@
   {{/is}}
 
   {{#is "index, tag, author"}}
-  {{if @site.cover_image}}
+  {{#if @site.cover_image}}
   <img src="{{@site.cover_image}}" alt="" class="banner-image">
   {{else}}
   <div class="banner-placeholding-spacer"></div>
