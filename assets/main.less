@@ -5,6 +5,8 @@
 @import './viewport.less';
 @import './post.less';
 
+@max-body-width: 40rem;
+
 :root {
   --font-default: 'Inter var', 'Inter', 'Source Han Sans SC', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -74,16 +76,16 @@ code {
   .when-narrower-than(@breakpoint-md-lg, {
     background: linear-gradient(to bottom, var(--color-bg), 40%, transparent);
   });
+}
 
-  .narrow-header-root {
-    height: 72px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.narrow-header-root {
+  height: 72px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
-    font-size: 16px;
-    font-weight: 500;
-  }
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .banner-image {
@@ -125,8 +127,10 @@ code {
   top: 0px;
 }
 
-.wide-banner-wrapper-inner {
+.wide-header-left,
+.wide-header-right {
   padding: 48px;
+  width: calc((100vw - @max-body-width) / 2 - (48px * 2));
 }
 
 .banner-topleft {
@@ -195,7 +199,7 @@ ul.nav {
 .body-container {
   z-index: 1;
   .when-wider-than(@breakpoint-sm-md, {
-    width: 40rem;
+    width: @max-body-width;
     align-self: center;
 
     &.with-banner-image {
