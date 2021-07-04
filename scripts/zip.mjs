@@ -14,10 +14,7 @@ archive.on("error", (data) => {
 })
 
 // include assets, but not main.less
-archive.directory('assets/fonts')
-archive.glob('assets/scripts/**.js')
-archive.file('assets/google-fonts.css')
-archive.file('assets/main.css')
+archive.directory('assets/dist')
 
 // include partials
 archive.directory('partials')
