@@ -1,11 +1,13 @@
 {{!< default-layout }} {{#with post}} <div class='post'>
 
   <h1 class="title">{{title}}</h1>
-  <div class='meta'>by {{{authors}}} at {{date created_at format='YYYY-MM-DD'}}</div>
+  <section class='meta'> by {{{authors}}} at {{date created_at format='YYYY-MM-DD' }} <br>
+    # {{tags}}
+  </section>
 
-  <div class='body'>
+  <section class='body'>
     {{{content}}}
-  </div>
+  </section>
 
   {{> share-menu}}
 
@@ -45,8 +47,6 @@
     })
   </script>
 
+  {{> ui-footer-right}}
   </div>
   {{/with}}
-
-
-  {{> ui-footer-right}}

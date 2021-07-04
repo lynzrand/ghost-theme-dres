@@ -39,9 +39,11 @@
 .post {
   h1.title {
     font-size: 40px;
-    margin-top: 0;
     line-height: 98%;
     letter-spacing: -0.02em;
+
+    margin-top: 0;
+    margin-bottom: 0;
 
     .when-wider-than(@breakpoint-sm-md,{
       max-width: 90%;
@@ -50,19 +52,25 @@
   .meta {
     font-size: 16px;
     color: var(--color-secondary);
+    line-height: 140%;
+
+    margin-top: 24px;
+    margin-bottom: 24px;
   }
   .body {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    line-height: 150%;
+    line-height: 140%;
 
     p {
-      margin-top: 1rem;
-      margin-bottom: 1rem;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
     }
 
     figure {
+      margin-top: 1.5em;
+      margin-bottom: 1.5em;
       margin-left: 0;
       margin-right: 0;
       width: 100%;
@@ -77,7 +85,24 @@
 
     figcaption {
       font-size: 14px;
+      margin: 4px 0px;
       color: var(--color-secondary);
+    }
+
+    blockquote {
+      border-left: 2px solid var(--color-bg-emph);
+
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+      margin-left: 0px;
+      margin-right: 0px;
+
+      padding-left: 1em;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+
+      font-style: italic;
+      // color: var(--color-fg-emph);
     }
 
     img {
@@ -101,6 +126,11 @@
       font-weight: normal;
       font-style: normal;
       content: '\ea70';
+    }
+
+    hr {
+      margin: 3em ~'min(4em,10vw)';
+      color: var(--color-bg-emph);
     }
   }
 }
@@ -239,15 +269,10 @@
   overflow: hidden;
 }
 
-.kg-bookmark-publisher::before {
-  content: '•';
-  margin: 0 0.5em;
-}
-
 .kg-gallery-container {
   display: flex;
   flex-direction: column;
-  margin: 1.5em auto;
+  margin: 8px auto;
   // max-width: 1040px;
   width: 100%;
 }

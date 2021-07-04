@@ -204,6 +204,7 @@ ul.nav {
   .when-wider-than(@breakpoint-sm-md, {
     width: @max-body-width;
     align-self: center;
+    margin-top: 16px;
 
     .banner-image ~ & {
       margin-top: calc(-1 * var(--body-inset-size));
@@ -235,8 +236,12 @@ ul.nav {
 footer {
   text-align: right;
   color: var(--color-secondary);
-  padding: 16px;
+  // padding: 16px;
   font-size: 14px;
+
+  a {
+    text-decoration: none;
+  }
 
   // .when-wider-than(@breakpoint-md-lg,{
   //   position: sticky;
