@@ -30,6 +30,12 @@
 }
 
 // ====== post ======
+
+.lined() {
+  background-color: transparent;
+  border: 1px solid var(--color-bg-emph);
+}
+
 .post {
   h1 {
     font-size: 40px;
@@ -59,7 +65,14 @@
     figure {
       margin-left: 0;
       margin-right: 0;
-      max-width: 100%;
+      width: 100%;
+
+      iframe {
+        width: 100%;
+      }
+      a::after {
+        content: '';
+      }
     }
 
     figcaption {
@@ -79,9 +92,8 @@
 
     code {
       margin: 0px;
-      background-color: transparent;
-      border: 1px solid var(--color-bg-emph);
       line-height: 125%;
+      .lined();
     }
 
     a::after {
@@ -145,6 +157,7 @@
 .kg-bookmark-card {
   width: 100%;
   position: relative;
+  .lined();
 }
 
 .kg-bookmark-container {
@@ -164,8 +177,9 @@
 .kg-bookmark-content {
   flex-basis: 0;
   flex-grow: 999;
-  padding: 20px;
+  padding: 12px;
   order: 1;
+  min-width: 60%;
 }
 
 .kg-bookmark-title {
@@ -174,10 +188,13 @@
 
 .kg-bookmark-metadata,
 .kg-bookmark-description {
-  margin-top: 0.5em;
+  margin-top: 0.2em;
 }
 
 .kg-bookmark-metadata {
+  font-size: 14px;
+  color: var(--color-secondary);
+
   align-items: center;
   white-space: nowrap;
   overflow: hidden;
@@ -185,6 +202,9 @@
 }
 
 .kg-bookmark-description {
+  font-size: 14px;
+  color: var(--color-secondary);
+
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -222,4 +242,59 @@
 .kg-bookmark-publisher::before {
   content: '•';
   margin: 0 0.5em;
+}
+
+.kg-gallery-container {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5em auto;
+  // max-width: 1040px;
+  width: 100%;
+}
+
+.kg-gallery-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.kg-gallery-image img {
+  display: block;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.kg-gallery-row:not(:first-of-type) {
+  margin: 8px 0 0 0;
+}
+
+.kg-gallery-image:not(:first-of-type) {
+  margin: 0 0 0 8px;
+}
+
+.kg-image-card,
+.kg-gallery-card {
+  margin: 0 0 16px;
+}
+
+.kg-image-card figcaption,
+.kg-gallery-card figcaption {
+  margin: -1em 0 16px;
+}
+
+.fluid-width-video-wrapper {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%;
+}
+
+.fluid-width-video-wrapper iframe,
+.fluid-width-video-wrapper object,
+.fluid-width-video-wrapper embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }

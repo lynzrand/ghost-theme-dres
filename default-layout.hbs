@@ -34,13 +34,21 @@
     </div>
   </div>
 
+  {{#is "page, post"}}
   {{#if post.feature_image}}
   <img src="{{post.feature_image}}" alt="" class="banner-image">
-  {{else if @site.cover_image}}
+  {{else}}
+  <div class="banner-placeholding-spacer"></div>
+  {{/if}}
+  {{/is}}
+
+  {{#is "index, tag, author"}}
+  {{if @site.cover_image}}
   <img src="{{@site.cover_image}}" alt="" class="banner-image">
   {{else}}
   <div class="banner-placeholding-spacer"></div>
   {{/if}}
+  {{/is}}
   <div class="wide-banner-wrapper">
     <div class="wide-banner-wrapper-inner wide-header-left" id="ui-wide-header-root">
     </div>

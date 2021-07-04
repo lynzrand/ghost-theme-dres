@@ -23,7 +23,7 @@
   "scripts": {
     "dev": "parcel serve assets/main.less assets/scripts/main.ts --dist-dir assets/dist",
     "build": "parcel build assets/main.less assets/scripts/main.ts --dist-dir assets/dist",
-    "zip": "node scripts/zip.mjs",
+    "zip": "rm -rf assets/dist && yarn build && node scripts/zip.mjs",
     "scan": "gscan ."
   },
   "devDependencies": {
