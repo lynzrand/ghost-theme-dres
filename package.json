@@ -18,7 +18,7 @@
     "desktop": "res/mainpage.png"
   },
   "config": {
-    "posts_per_page": 4
+    "posts_per_page": 16
   },
   "scripts": {
     "dev": "parcel serve assets/main.less assets/scripts/main.ts --dist-dir assets/dist",
