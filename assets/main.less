@@ -58,9 +58,6 @@ code {
   font-family: var(--font-mono);
 }
 
-.ri-text {
-}
-
 // ======= Banner stuff ======
 
 .narrow-header-wrapper {
@@ -73,12 +70,13 @@ code {
   padding-left: 24px;
   padding-right: 24px;
 
-  .when-narrower-than(@breakpoint-md-lg, {
-    background: linear-gradient(to bottom, var(--color-bg), 40%, transparent);
-  });
-  .when-wider-than(@breakpoint-sm-md, {
-    display: none;
-  });
+  background: linear-gradient(to bottom, var(--color-bg), 40%, transparent);
+
+  .script-initialized & {
+    .when-wider-than(@breakpoint-md-lg, {
+      display: none;
+    });
+  }
 }
 
 .narrow-header-root {
@@ -191,6 +189,10 @@ ul.nav {
 
 // ====== body =======
 
+body {
+  --body-inset-size: -16px;
+}
+
 .index-page {
   --body-inset-size: 48px;
 }
@@ -204,8 +206,7 @@ ul.nav {
   .when-wider-than(@breakpoint-sm-md, {
     width: @max-body-width;
     align-self: center;
-    margin-top: 16px;
-
+   
     .banner-image ~ & {
       margin-top: calc(-1 * var(--body-inset-size));
       min-height: var(--body-inset-size);

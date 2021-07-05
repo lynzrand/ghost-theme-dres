@@ -1,8 +1,10 @@
 {{!< default-layout }} {{#with post}} <div class='post'>
 
   <h1 class="title">{{title}}</h1>
-  <section class='meta'> by {{{authors}}} at {{date created_at format='YYYY-MM-DD' }} <br>
-    # {{tags}}
+  <section class='meta'> by {{{authors}}} at {{date created_at format='YYYY-MM-DD' }}
+    {{#if tags}}
+    <br> # {{tags}}
+    {{/if}}
   </section>
 
   <section class='body'>

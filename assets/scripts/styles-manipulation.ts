@@ -6,6 +6,7 @@ export function init() {
   let state: UiState = {
     state: 'narrow',
   }
+  document.body.classList.add('script-initialized')
   let observer = new ResizeObserver((entries, observer) => {
     onPageWidthChange(entries, state)
   })
