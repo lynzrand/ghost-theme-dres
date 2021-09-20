@@ -46,10 +46,14 @@ body {
 
 a {
   color: inherit;
-  text-decoration: underline;
+  text-decoration: none;
   &:focus,
   &:hover {
     color: var(--color-fg-emph);
+  }
+
+  .underline-links & {
+    text-decoration: underline;
   }
 }
 
@@ -187,6 +191,21 @@ ul.nav {
   flex-grow: 1;
 }
 
+// ====== header ======
+
+.links {
+  display: flex;
+  font-size: 24px;
+  margin-bottom: 12px;
+  margin-left: -8px;
+  margin-right: -8px;
+
+  a {
+    display: block;
+    padding: 8px;
+  }
+}
+
 // ====== body =======
 
 body {
@@ -239,10 +258,6 @@ footer {
   color: var(--color-secondary);
   // padding: 16px;
   font-size: 14px;
-
-  a {
-    text-decoration: none;
-  }
 
   // .when-wider-than(@breakpoint-md-lg,{
   //   position: sticky;

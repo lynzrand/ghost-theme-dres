@@ -1,7 +1,20 @@
-{{!< default-layout }} {{#foreach posts}} <div class='post-card'>
-  <h2><a href={{url}}>{{title}}</a></h2>
-  <div class='meta'>by {{{authors}}} at {{date created_at format='YYYY-MM-DD'}}</div>
-  <p class='body'>{{excerpt}}</p>
+{{!< default-layout }} <div class="links">
+  <a href="/rss" target="_blank" rel="noopener noreferrer">
+    <i class="ri-rss-line"></i>
+  </a>
+  {{#is index}}
+  {{#if @site.twitter}}
+  <a href="{{twitter_url}}" target="_blank" rel="noopener noreferrer">
+    <i class="ri-twitter-line"></i>
+  </a>
+  {{/if}}
+  {{/is}}
+  </div>
+
+  {{#foreach posts}} <div class='post-card underline-links'>
+    <h2><a href={{url}}>{{title}}</a></h2>
+    <div class='meta'>by {{{authors}}} at {{date created_at format='YYYY-MM-DD'}}</div>
+    <p class='body'>{{excerpt}}</p>
   </div>
   {{/foreach}}
 

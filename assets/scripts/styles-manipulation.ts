@@ -6,11 +6,23 @@ export function init() {
   let state: UiState = {
     state: 'narrow',
   }
-  document.body.classList.add('script-initialized')
-  let observer = new ResizeObserver((entries, observer) => {
-    onPageWidthChange(entries, state)
-  })
-  observer.observe(document.body)
+
+  // Try to find ui root and initialize as soon as they are loaded
+  let findRoot = () => {
+    let narrow_root = document.getElementById('ui-narrow-header-root')
+    let wide_root = document.getElementById('ui-wide-header-root')
+    if (wide_root && narrow_root) {
+      document.body.classList.add('script-initialized')
+      let observer = new ResizeObserver((entries, observer) => {
+        onPageWidthChange(entries, state)
+      })
+      observer.observe(document.body)
+    } else {
+      requestAnimationFrame(findRoot)
+    }
+  }
+
+  findRoot()
 }
 
 function onPageWidthChange(ev: ResizeObserverEntry[], state: UiState) {

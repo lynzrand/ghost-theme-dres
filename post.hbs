@@ -1,13 +1,13 @@
 {{!< default-layout }} {{#with post}} <div class='post'>
 
   <h1 class="title">{{title}}</h1>
-  <section class='meta'> by {{{authors}}} at {{date created_at format='YYYY-MM-DD' }}
+  <section class='meta underline-links'> by {{{authors}}} at {{date created_at format='YYYY-MM-DD' }}
     {{#if tags}}
     <br> # {{tags}}
     {{/if}}
   </section>
 
-  <section class='body'>
+  <section class='body underline-links'>
     {{{content}}}
   </section>
 
