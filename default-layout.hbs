@@ -62,9 +62,24 @@
   <div class="spacer"></div>
 
   {{ghost_foot}}
-  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+
+  <div class="container narrow-footer-wrapper">
+    <div class="narrow-footer-right" id="ui-narrow-footer-right-root">
+      {{> ui-footer-right}}
+    </div>
+  </div>
+
+  <div class="wide-footer-wrapper">
+    <div class="wide-footer-right-wrapper">
+      <div class="wide-footer-right" id="ui-wide-footer-right-root">
+      </div>
+    </div>
+  </div>
+
+  {{!--
   <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/languages/handlebars.min.js"></script>
-  <script>hljs.highlightAll();</script>
+  --}}
+
 </body>
 
 </html>

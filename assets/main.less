@@ -74,7 +74,7 @@ code {
   padding-left: 24px;
   padding-right: 24px;
 
-  background: linear-gradient(to bottom, var(--color-bg), 40%, transparent);
+  background: linear-gradient(to bottom, var(--color-bg), 40%, var(--color-bg-transparent-premult));
 
   .script-initialized & {
     .when-wider-than(@breakpoint-md-lg, {
@@ -136,6 +136,31 @@ code {
 .wide-header-right {
   padding: 48px;
   width: calc((100vw - @max-body-width) / 2 - (48px * 2));
+}
+
+.wide-footer-wrapper {
+  position: sticky;
+  box-sizing: border-box;
+  height: 0px;
+  bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.wide-footer-right-wrapper {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+.wide-footer-right {
+  margin-bottom: 16px;
+  margin-right: 16px;
+}
+
+.narrow-footer-right {
+  margin-bottom: 16px;
 }
 
 .banner-topleft {
@@ -220,20 +245,29 @@ body {
   --body-inset-size: 96px;
 }
 
-.body-container {
+.container {
   z-index: 1;
   .when-wider-than(@breakpoint-sm-md, {
     width: @max-body-width;
     align-self: center;
-   
-    .banner-image ~ & {
-      margin-top: calc(-1 * var(--body-inset-size));
-      min-height: var(--body-inset-size);
-    }
   });
 
   .when-narrower-than(@breakpoint-sm-md, {
     align-self: stretch;
+  });
+
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.body-container {
+  .container();
+
+  .when-wider-than(@breakpoint-sm-md, {
+    .banner-image ~ & {
+      margin-top: calc(-1 * var(--body-inset-size));
+      min-height: var(--body-inset-size);
+    }
   });
 
   padding: 32px;

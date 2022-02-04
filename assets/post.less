@@ -299,6 +299,12 @@
   overflow: hidden;
 }
 
+.kg-bookmark-publisher {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .kg-gallery-container {
   display: flex;
   flex-direction: column;
@@ -326,6 +332,23 @@
 
 .kg-gallery-image:not(:first-of-type) {
   margin: 0 0 0 8px;
+}
+
+.kg-width-wide {
+  position: relative;
+  width: 85vw;
+  min-width: 100%;
+  margin: auto calc(50% - 50vw);
+  transform: translateX(calc(50vw - 50%));
+}
+
+.kg-width-full {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
 .kg-image-card,

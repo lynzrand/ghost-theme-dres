@@ -1,6 +1,6 @@
 // Moves title and footer around to fit different screen widths
 
-const BREAKPOINT = 1200
+const BREAKPOINT = 1280
 
 export function init() {
   let state: UiState = {
@@ -11,7 +11,9 @@ export function init() {
   let findRoot = () => {
     let narrow_root = document.getElementById('ui-narrow-header-root')
     let wide_root = document.getElementById('ui-wide-header-root')
-    if (wide_root && narrow_root) {
+    let footer_wide_root = document.getElementById('ui-wide-footer-right-root')
+    let footer_narrow_root = document.getElementById('ui-narrow-footer-right-root')
+    if (wide_root && narrow_root && footer_wide_root && footer_narrow_root) {
       document.body.classList.add('script-initialized')
       let observer = new ResizeObserver((entries, observer) => {
         onPageWidthChange(entries, state)
@@ -62,13 +64,19 @@ function moveComponents(to: PageState) {
   if (to === 'narrow') {
     const narrowHeaderRoot = document.getElementById('ui-narrow-header-root')
     removeAndAppendTo(narrowHeaderRoot, [logo, nav])
+    const narrowFooterRightRoot = document.getElementById('ui-narrow-footer-right-root')
+    removeAndAppendTo(narrowFooterRightRoot, [footerRight])
   } else if (to === 'wide') {
     const wideHeaderRoot = document.getElementById('ui-wide-header-root')
     removeAndAppendTo(wideHeaderRoot, [logo, nav])
+    const wideFooterRightRoot = document.getElementById('ui-wide-footer-right-root')
+    removeAndAppendTo(wideFooterRightRoot, [footerRight])
   }
 }
 
-function removeAndAppendTo(target: HTMLElement, items: (HTMLElement | null)[]) {
+function removeAndAppendTo(target: HTMLElement | undefined, items: (HTMLElement | null)[]) {
+  console.log('Appending ', items, ' to ', target)
+  if (!target) return
   for (let item of items) {
     if (item) {
       item.remove()
