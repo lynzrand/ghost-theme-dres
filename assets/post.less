@@ -68,21 +68,6 @@
       margin-bottom: 0.5em;
     }
 
-    figure {
-      margin-top: 1.5em;
-      margin-bottom: 1.5em;
-      margin-left: 0;
-      margin-right: 0;
-      width: 100%;
-
-      iframe {
-        width: 100%;
-      }
-      a::after {
-        content: '';
-      }
-    }
-
     figcaption {
       font-size: 14px;
       margin: 4px 0px;
@@ -105,9 +90,13 @@
       // color: var(--color-fg-emph);
     }
 
-    img {
-      max-width: 100%;
-      height: auto;
+    figure {
+      a {
+        text-decoration: none;
+        &::after {
+          content: none;
+        }
+      }
     }
 
     pre,
@@ -222,12 +211,12 @@
 
 .kg-bookmark-container {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row-reverse;
   color: currentColor;
   font-family: inherit;
-  text-decoration: none;
   border: 1px solid rgba(0, 0, 0, 0.1);
+
+  text-decoration: none;
 }
 
 .kg-bookmark-container:hover {
@@ -236,7 +225,7 @@
 
 .kg-bookmark-content {
   flex-basis: 0;
-  flex-grow: 999;
+  flex-grow: 1;
   padding: 12px;
   order: 1;
   min-width: 60%;
@@ -283,11 +272,11 @@
 .kg-bookmark-thumbnail {
   display: flex;
   flex-basis: 24rem;
-  flex-grow: 1;
+  flex-grow: 0;
+  max-width: 40%;
 }
 
 .kg-bookmark-thumbnail img {
-  max-width: 100%;
   height: auto;
   vertical-align: bottom;
   object-fit: cover;
@@ -297,12 +286,41 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+
+  &:not(:last-child) {
+    &::after {
+      content: ' • ';
+    }
+  }
 }
 
 .kg-bookmark-publisher {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.kg-image,
+.kg-card {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+
+  iframe {
+    width: 100%;
+  }
+  a {
+    text-decoration: none;
+  }
+  a::after {
+    content: '';
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 .kg-gallery-container {
@@ -353,7 +371,8 @@
 
 .kg-image-card,
 .kg-gallery-card {
-  margin: 0 0 16px;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 .kg-image-card figcaption,
