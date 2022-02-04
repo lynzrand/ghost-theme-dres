@@ -47,13 +47,20 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+
   &:focus,
   &:hover {
     color: var(--color-fg-emph);
+    transition: color ease-in-out 200ms;
   }
 
   .underline-links & {
-    text-decoration: underline;
+    text-decoration: dotted underline;
+
+    &:focus,
+    &:hover {
+      text-decoration: solid underline;
+    }
   }
 }
 
