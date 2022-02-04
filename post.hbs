@@ -1,9 +1,10 @@
 {{!< default-layout }} {{#with post}} <div class='post'>
 
   <h1 class="title">{{title}}</h1>
-  <section class='meta underline-links'> by {{{authors}}} at {{date created_at format='YYYY-MM-DD' }}
+  <section class='meta underline-links'> by {{{authors}}} at {{date created_at format='YYYY-MM-DD hh:mm' }}
     {{#if tags}}
-    <br> # {{tags}}
+    <br>
+    Tags: {{tags}}
     {{/if}}
   </section>
 
@@ -11,7 +12,9 @@
     {{{content}}}
   </section>
 
-  {{> share-menu}}
+  <div id="ui-narrow-share-menu-root">
+    {{> share-menu}}
+  </div>
 
   <div class="pagination pagination-btn-line">
     {{#prev_post}}

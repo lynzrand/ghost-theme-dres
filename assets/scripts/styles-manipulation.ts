@@ -66,15 +66,19 @@ function moveComponents(to: PageState) {
     removeAndAppendTo(narrowHeaderRoot, [logo, nav])
     const narrowFooterRightRoot = document.getElementById('ui-narrow-footer-right-root')
     removeAndAppendTo(narrowFooterRightRoot, [footerRight])
+    const narrowShareMenuRoot = document.getElementById('ui-narrow-share-menu-root')
+    removeAndAppendTo(narrowShareMenuRoot, [shareMenu])
   } else if (to === 'wide') {
     const wideHeaderRoot = document.getElementById('ui-wide-header-root')
     removeAndAppendTo(wideHeaderRoot, [logo, nav])
     const wideFooterRightRoot = document.getElementById('ui-wide-footer-right-root')
     removeAndAppendTo(wideFooterRightRoot, [footerRight])
+    const wideShareMenuRoot = document.getElementById('ui-wide-share-menu-root')
+    removeAndAppendTo(wideShareMenuRoot, [shareMenu])
   }
 }
 
-function removeAndAppendTo(target: HTMLElement | undefined, items: (HTMLElement | null)[]) {
+function removeAndAppendTo(target: HTMLElement | null, items: (HTMLElement | null)[]) {
   console.log('Appending ', items, ' to ', target)
   if (!target) return
   for (let item of items) {
