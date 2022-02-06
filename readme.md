@@ -2,6 +2,8 @@
 
 A simple & stylish Ghost theme. Used in <https://rynco.me>.
 
+> WARNING: The title and copyright messages are hardcoded. Please edit before using on your own projects.
+
 ![screenshot](res/mainpage.png)
 
 ## Build
